@@ -1,0 +1,17 @@
+BEGIN TRANSACTION;
+CREATE TABLE Domains (
+	id INTEGER PRIMARY KEY,
+	domain TEXT
+);
+CREATE TABLE URLs (
+	id INTEGER PRIMARY KEY,
+	url TEXT, scanned NUMERIC,
+	domain NUMERIC,
+	last_scan DATETIME,
+	errors NUMERIC,
+	last_error DATETIME
+);
+INSERT INTO URLs VALUES(1,'http://www.ietf.org/rfc.html','',0,NULL,NULL,NULL);
+CREATE UNIQUE INDEX domain ON Domains(domain ASC);
+CREATE UNIQUE INDEX url ON URLs(url ASC);
+COMMIT;
